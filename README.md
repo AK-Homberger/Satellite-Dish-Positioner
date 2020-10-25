@@ -32,7 +32,7 @@ The motor driver is using ports D0 and D6. The 22KHz signal is generated on port
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 The device is pre-cofigured for Astra 19.2. Translated to stadard navigational compass cordinates this is 164° and elevation to horizontal is 8.1°.
-Plese change for other stllites.
+Please change this for other satellites.
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
@@ -46,7 +46,14 @@ The connection between the sat dish and the rotor as well as the other parts are
 ![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
 
 Parts:
--
+
+- Wemos D1 Mini: AzDelivery (e.g on Amazon)
+- GY-271 compass: AzDelivery (e.g on Amazon)
+- GY-521 gyroscope: AzDelivery (e.g on Amazon)
+- D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
+- Adafruit DRV8871: [Link](https://eckstein-shop.de/Adafruit-DRV8871-DC-Motor-Driver-Breakout-Board-36A-Max)
+
+
 
 
 
