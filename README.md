@@ -1,31 +1,33 @@
 # Satellite-Dish-Positioner
 
 
-This is an automatical satellite dish positioner with Wemos D1, compass and MPU. It controls satellite dish direction with a Diseqc rotor (azimut) and linear actuator (elevation). Uses an MPU6050 device for Elevation and a QMC5883L compass for azimut control.
+This is an automatical satellite dish positioner with Wemos D1, compass and MPU. It controls satellite dish direction with a Diseqc rotor (azimut) and linear actuator (elevation). It uses an gyroscope device for elevation and a compass device for azimut control.
 
 ![SatPositioner](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1403.jpg)
 
-The purpose of this device is to support me on the boat with the positining of the satllite dish from the cabin. But it is als usable for campers and mobile homes.
+The purpose of this device is to support me on the boat with the positioning of the satllite dish from the cabin. But it is als usable for campers and mobile homes.
 
-The rotor is a standard Diseqc dish motor. But for this project we use the motor upside down to move the dish in horizontal ballance.
+The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved a lot of time. For simplification I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risitor directly connected to Port D5 on Wemos D1 is sufficient to generat a signal the the diseqc moter recognised.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risitor directly connected to Port D5 on Wemos D1 is sufficient to generat a signal the the Diseqc moter recognised.
 
 The motor gets the power voltage also via the coax connection. 
 
-The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. Which is more than sufficient for positioning the Azimut.
+The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. Which is more than sufficient for positioning the azimut.
 You just have to position the sat finder in a general south facing direction. Thats all.
 
-The Elevation is controlled with a standard small linear actuator which is availebal for less than 30 Euro. I use here a actuator with 50 mm length.
+The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should worl also.
 
 The Wemos D1 Mini gets the power with a step-down converter from the 12-14 Volt from  the power source (e.g. from boat battery).
-In addition to the 22KHz logic only three other items are required:
+In addition to the 22KHz logic, only four other items are required:
 
+- Step-down-converter: D24V10F5
 - Compass: GY-271 from AzDelivery (use QMC5883L library in Arduino)
 - 6 axis gyroscope: GY-521 from AzDelivery (use MPU6050 library in Arduino):
 - Motor driver:  Adafruit DRV8871 DC Motor Driver
 
-The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA).
+The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a shor 4-wire cable and placed on the back of the sat dish.
+
 The motor driver is using ports D0 and D6. The 22KHz signal is generated on port D5.
 
 ![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
@@ -67,7 +69,7 @@ For the 22KHz signal generator:
 - Condensator 3,3 yF - TON 3,3/63 [Link](https://www.reichelt.de/)
 
 
-Version 0.1 - 25.10.2010: Initial version. Complete schamatic will follow.
+Version 0.1 - 25.10.2010: Initial version. Complete schamatic and OpenSCAD files will follow.
 
 
 
