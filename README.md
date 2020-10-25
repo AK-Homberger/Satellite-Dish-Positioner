@@ -9,37 +9,36 @@ The purpose of this device is to support me on the boat with the positioning of 
 
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risitor directly connected to Port D5 on Wemos D1 is sufficient to generat a signal the the Diseqc moter recognised.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to Port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
 
 The motor gets the power voltage also via the coax connection. 
 
 The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. Which is more than sufficient for positioning the azimut.
 You just have to position the sat finder in a general south facing direction. Thats all.
 
-The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should worl also.
+The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should work also.
 
-The Wemos D1 Mini gets the power with a step-down converter from the 12-14 Volt from  the power source (e.g. from boat battery).
 In addition to the 22KHz logic, only four other items are required:
 
-- Step-down-converter: D24V10F5
+- Step-down-converter 12V to 5V: D24V10F5
 - Compass: GY-271 from AzDelivery (use QMC5883L library in Arduino)
 - 6 axis gyroscope: GY-521 from AzDelivery (use MPU6050 library in Arduino):
 - Motor driver:  Adafruit DRV8871 DC Motor Driver
 
-The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a shor 4-wire cable and placed on the back of the sat dish.
+The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
 
 The motor driver is using ports D0 and D6. The 22 KHz signal is generated on port D5.
 
 ![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
-The device is pre-cofigured for Astra 19.2. Translated to stadard navigational compass cordinates this is 164° and elevation to horizontal is 8.1°.
+The device is pre-configured for Astra 19.2. Translated to stadard navigational compass coordinates this is 164° and elevation to horizontal is 8.1°.
 Please change this for other satellites.
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
 With the web interface you can control the positioner. You can do fine tuning for azimut/elevation and switch automatic contol between Off, On and R-Off.
-R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the diseqc motor is a bit noisy when constantly re-positioning. The -Step/+Step buttons are changing the rotpr for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
+R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the diseqc motor is a bit noisy when constantly re-positioning. The "-Step/+Step" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
