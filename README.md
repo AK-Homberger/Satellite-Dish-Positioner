@@ -1,4 +1,4 @@
-# Satellite-Dish-Positioner
+# Satellite Dish Positioner
 
 
 This is an automatical satellite dish positioner with Wemos D1, compass and MPU. It controls satellite dish direction with a Diseqc rotor (azimut) and linear actuator (elevation). It uses an gyroscope device for elevation and a compass device for azimut control.
