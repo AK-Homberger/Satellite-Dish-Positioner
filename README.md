@@ -9,7 +9,8 @@ The purpose of this device is to support me on the boat with the positining of t
 
 The rotor is a standard Diseqc dish motor. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub (Link)(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved a lot of time.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved a lot of time.
+
 The motor gets the power voltage also via the coax connection. 
 
 The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. Which is more than sufficient for positioning the Azimut.
