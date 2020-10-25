@@ -40,8 +40,10 @@ R-Off means only automatic control for azimut is switched off. Elevation remains
 
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
+![Connection](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1404.jpg)
 
-Here a few pictures of the assembled device:
+Parts:
+-
 
 
 
