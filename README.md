@@ -45,6 +45,10 @@ The connection between the sat dish and the rotor as well as the other parts are
 
 ![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
 
+The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to soth direction. For other directions do a correction in the code (I had to add 90 degrees to get south direction, 180 °).
+
+![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
+
 Parts:
 
 - Wemos D1 Mini: AzDelivery (e.g on Amazon)
@@ -61,7 +65,7 @@ For the 22KHz signal generator:
 - Condensator 3,3 yF - TON 3,3/63 [Link](https://www.reichelt.de/)
 
 
-
+Version 0.1 - 25.10.2010: Initial version. Complete schamatic will follow.
 
 
 
