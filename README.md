@@ -5,7 +5,7 @@ This is an automatical satellite dish positioner with Wemos D1, compass and MPU.
 
 ![SatPositioner](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1403.jpg)
 
-The purpose of this device is to support me on the boat with the positioning of the satllite dish from the cabin. But it is als usable for campers and mobile homes.
+The purpose of this device is to support me on the boat with the positioning of the satellite dish from the cabin. But it is also usable for campers and mobile homes.
 
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
