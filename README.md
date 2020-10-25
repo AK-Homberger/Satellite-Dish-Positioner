@@ -3,6 +3,8 @@
 
 This is an automatical satellite dish positioner with Wemos D1, compass and MPU. It controls satellite dish direction with a Diseqc rotor (azimut) and linear actuator (elevation). Uses an MPU6050 device for Elevation and a QMC5883L compass for azimut control.
 
+![SatPositioner](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1403.jpg)
+
 The purpose of this device is to support me on the boat with the positining of the satllite dish from the cabin. But it is als usable for campers and mobile homes.
 
 The rotor is a standard Diseqc dish motor. But for this project we use the motor upside down to move the dish in horizontal ballance.
