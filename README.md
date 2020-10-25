@@ -9,7 +9,7 @@ The purpose of this device is to support me on the boat with the positining of t
 
 The rotor is a standard Diseqc dish motor. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved a lot of time. For simplification I only used the right part of the circuit starting with the 100 Ohm resistor. The risitor directly connected to Port D5 on Wemos D1 is sufficient to generat a signal the the diseqc moter recognised.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved a lot of time. For simplification I only used the right part of the [circuit}(https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risitor directly connected to Port D5 on Wemos D1 is sufficient to generat a signal the the diseqc moter recognised.
 
 The motor gets the power voltage also via the coax connection. 
 
