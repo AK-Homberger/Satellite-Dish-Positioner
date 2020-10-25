@@ -51,6 +51,8 @@ The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. T
 
 Parts:
 
+- Diseqc motor: [Link](https://www.ebay.de/itm/332284938131?chn=ps&norover=1&mkevt=1&mkrid=707-134425-41852-0&mkcid=2&itemid=332284938131&targetid=940585975411&device=c&mktype=pla&googleloc=9043858&poi=&campaignid=10203814992&mkgroupid=101937413437&rlsatarget=pla-940585975411&abcId=1145992&merchantid=112028706&gclid=EAIaIQobChMIg57du6jQ7AIVRtiyCh0ixQoGEAQYAyABEgJfgvD_BwE)
+- Linear Actuator: [Link](https://www.ebay.de/itm/750N-25-150-mm-Linear-Actuator-elektrische-Mikro-Linearantrieb-12V-Kraft-IP65/402438285052?_trkparms=aid%3D555021%26algo%3DPL.SIMRVI%26ao%3D1%26asc%3D225078%26meid%3De5d8f347c09a4ba989a35d0217f8cb5c%26pid%3D100008%26rk%3D1%26rkt%3D11%26mehot%3Dpf%26sd%3D383778548269%26itm%3D402438285052%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3DSimplRVIAMLv5WebWithPLRVIOnTopCombiner&_trksid=p2047675.c100008.m2219)
 - Wemos D1 Mini: AzDelivery (e.g on Amazon)
 - GY-271 compass: AzDelivery (e.g on Amazon)
 - GY-521 gyroscope: AzDelivery (e.g on Amazon)
