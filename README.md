@@ -63,7 +63,7 @@ Parts:
 
 For the 22KHz signal generator:
 - Resistor 51 [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-51-ohm-1-4w-51-p1441.html?&nbc=1)
-- Resistor 100 [Link](https://www.reichelt.de/)
+- Resistor 100 [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-100-ohms-1-4w-100-p1336.html?&nbc=1)
 - Indictivity 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=bou%20rlb0914-102k)
 - Condensator 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=150mkt563k2e%20)
 - Condensator 3,3 yF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
