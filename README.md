@@ -28,7 +28,7 @@ In addition to the 22KHz logic, only four other items are required:
 
 The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a shor 4-wire cable and placed on the back of the sat dish.
 
-The motor driver is using ports D0 and D6. The 22KHz signal is generated on port D5.
+The motor driver is using ports D0 and D6. The 22 KHz signal is generated on port D5.
 
 ![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
 
@@ -47,7 +47,7 @@ The connection between the sat dish and the rotor as well as the other parts are
 
 ![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
 
-The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to soth direction. For other directions do a correction in the code (I had to add 90 degrees to get south direction, 180 °).
+The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to south direction. For other directions do a correction in the code (I had to add 90 degrees to get south direction, 180°).
 
 ![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
 
@@ -69,7 +69,7 @@ For the 22KHz signal generator:
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 
 
-Version 0.1 - 25.10.2010: Initial version. Complete schamatic and OpenSCAD files will follow.
+Version 0.1 - 25.10.2010: Initial version. Complete schematic and OpenSCAD files will follow.
 
 
 
