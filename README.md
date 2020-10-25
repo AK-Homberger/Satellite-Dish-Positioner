@@ -65,7 +65,7 @@ For the 22KHz signal generator:
 - Resistor 51 [Link](https://www.reichelt.de/)
 - Resistor 100 [Link](https://www.reichelt.de/)
 - Indictivity 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/)
-- Condensator 53 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/)
+- Condensator 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/)
 - Condensator 3,3 yF - TON 3,3/63 [Link](https://www.reichelt.de/)
 
 
