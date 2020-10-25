@@ -27,7 +27,7 @@ In addition to the 22KHz logic only three other items are required:
 The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA).
 The motor driver is using ports D0 and D6. The 22KHz signal is generated on port D5.
 
-[Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
+![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 The device is pre-cofigured for Astra 19.2. Translated to stadard navigational compass cordinates this is 164° and elevation to horizontal is 8.1°.
