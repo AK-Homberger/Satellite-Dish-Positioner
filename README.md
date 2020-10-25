@@ -43,6 +43,8 @@ The connection between the sat dish and the rotor as well as the other parts are
 
 ![Connection](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1404.jpg)
 
+![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
+
 Parts:
 -
 
