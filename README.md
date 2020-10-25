@@ -53,7 +53,12 @@ Parts:
 - D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
 - Adafruit DRV8871: [Link](https://eckstein-shop.de/Adafruit-DRV8871-DC-Motor-Driver-Breakout-Board-36A-Max)
 
-
+For the 22KHz signal generator:
+- Resistor 51 [Link](https://www.reichelt.de/)
+- Resistor 100 [Link](https://www.reichelt.de/)
+- Indictivity 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/)
+- Condensator 53 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/)
+- Condensator 3,3 yF - TON 3,3/63 [Link](https://www.reichelt.de/)
 
 
 
