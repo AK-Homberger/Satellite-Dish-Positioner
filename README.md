@@ -34,8 +34,12 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 ![Schematic](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatFinderSchematic.png)
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
-The device is pre-configured for Astra 19.2 and my home location. Translated to standard navigational compass coordinates this is 164° and elevation to horizontal is 8.1°. Please change this for your location and satellite.
-You can use one of the free calculatores to get the angles for your location and desired setellite (e.g. https://www.satlex.us/en/azel_calc.html). Use "Azimut angle" and "Elevation angle". The true north Azimut angle needs to be corrected to match the magnetic north of the compass (sailors should know how to calculate). But you can also use the "Delta Azimut" setting to correct the position. The Elevation angle must be corrected with a dish specific value. For my dish about -20 degree between dish beam angle and angle of compass mount. The offset has to be calculated only once.
+The device is pre-configured for Astra 19.2 and my home location. Please change this for your location and satellite.
+You can use one of the free calculatores to get the angles for your location and desired setellite (e.g. https://www.satlex.us/en/azel_calc.html). Use "Azimut angle" and "Elevation angle". 
+
+The true north Azimut angle needs to be corrected to match the magnetic north of the compass (sailors should know how to calculate). But you can also use the "Delta Azimut" setting to correct the position. 
+
+The Elevation angle must be corrected with a dish specific value. For my dish about -20 degree between dish beam angle and angle of compass mount. The offset has to be calculated only once and defined in the program.
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
