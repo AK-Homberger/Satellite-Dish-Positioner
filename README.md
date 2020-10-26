@@ -39,7 +39,7 @@ You can use one of the free calculatores to get the angles for your location and
 
 The true north Azimut angle needs to be corrected to match the magnetic north of the compass (sailors should know how to calculate). But you can also use the "Delta Azimut" setting to correct the position. 
 
-The Elevation angle must be corrected with a dish specific value. For my dish about -20 degree between dish beam angle and angle of compass mount. The offset has to be calculated only once and defined in the program.
+The Elevation angle must be corrected with a dish specific value. For my dish about -20 degree between dish beam angle and angle of gyroscope mount. The offset has to be calculated only once and defined in the program.
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
