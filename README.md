@@ -9,7 +9,7 @@ The purpose of this device is to support me on the boat with the positioning of 
 
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to Port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to Port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
 
 The motor gets the power voltage also via the coax connection. 
 
@@ -18,7 +18,7 @@ You just have to position the sat finder in a general south facing direction. Th
 
 The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should work also.
 
-In addition to the 22KHz logic, only four other items are required:
+In addition to the 22 KHz logic, only four other items are required:
 
 - Step-down-converter 12V to 5V: D24V10F5
 - Compass: GY-271 from AzDelivery (use [QMC5883LCompass](https://github.com/mprograms/QMC5883LCompass) library in Arduino)
