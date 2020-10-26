@@ -9,7 +9,7 @@ The purpose of this device is to support me on the boat with the positioning of 
 
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance.
 
-The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to Port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
+The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 Khz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to Port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
 
 The motor gets the power voltage also via the coax connection. 
 
@@ -38,7 +38,7 @@ Please change this for other satellites.
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
 With the web interface you can control the positioner. You can do fine tuning for azimut/elevation and switch automatic contol between Off, On and R-Off.
-R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
+R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the Diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
@@ -67,7 +67,7 @@ Parts:
 - D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
 - Adafruit DRV8871: [Link](https://eckstein-shop.de/Adafruit-DRV8871-DC-Motor-Driver-Breakout-Board-36A-Max)
 
-For the 22KHz signal generator:
+For the 22 KHz signal generator:
 - Resistor 51 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-51-ohm-1-4w-51-p1441.html?&nbc=1)
 - Resistor 100 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-100-ohms-1-4w-100-p1336.html?&nbc=1)
 - Inductor 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=bou%20rlb0914-102k)
