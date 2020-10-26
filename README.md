@@ -50,6 +50,10 @@ The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. T
 
 ![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
 
+![Bottom](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SCAD/SatFinderUnten.png)
+
+![Top](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SCAD/SatFinderOben.png)
+
 Parts:
 
 - Diseqc motor: [Link](https://www.ebay.de/itm/332284938131?chn=ps&norover=1&mkevt=1&mkrid=707-134425-41852-0&mkcid=2&itemid=332284938131&targetid=940585975411&device=c&mktype=pla&googleloc=9043858&poi=&campaignid=10203814992&mkgroupid=101937413437&rlsatarget=pla-940585975411&abcId=1145992&merchantid=112028706&gclid=EAIaIQobChMIg57du6jQ7AIVRtiyCh0ixQoGEAQYAyABEgJfgvD_BwE)
