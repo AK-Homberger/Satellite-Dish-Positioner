@@ -31,6 +31,8 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 
 ![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
 
+![Schematic](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatFinderSchematic.png)
+
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 The device is pre-configured for Astra 19.2. Translated to stadard navigational compass coordinates this is 164° and elevation to horizontal is 8.1°.
 Please change this for other satellites.
@@ -78,7 +80,7 @@ For the 22 KHz signal generator:
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 
 
-Version 0.1 - 25.10.2010: Initial version. Complete schematic will follow.
+Version 0.2 - 26.10.2010: Initial version. 
 
 
 
