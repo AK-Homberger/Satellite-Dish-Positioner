@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.1, 25.10.2020, AK-Homberger
+// Version 0.2, 26.10.2020, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -34,7 +34,7 @@
 #define datapin D5      // Digital pin for 22 kHz signal D5
 #define motor1 D6       // Linear Actuator 1
 #define motor2 D0       // Linear Actuator 2
-#define motorSpeed 700  // Actuator speed
+#define motorSpeed 800  // Actuator speed
 #define UP 1
 #define DOWN 2
 
@@ -74,7 +74,7 @@ void setup(void) {
 
   compass.init();
   //compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);
-  compass.setSmoothing(20, false);
+  compass.setSmoothing(10, true);
 
   // MPU Initialization
   mpu.Initialize();
@@ -172,6 +172,7 @@ void handleGetData() {
   root["led_level"] = LED_level;
 
   if (auto_on) root["state"] = "On"; else root["state"] = "Off";
+  if (auto_on && rotor_off) root["state"] = "R-Off";
 
   serializeJsonPretty(root, Text);
   server.send(200, "text/plain", Text); //Send sensors values to client ajax request
