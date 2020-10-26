@@ -16,7 +16,7 @@ The motor gets the 12 Volt power also via the coax connection.
 The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. That is more than sufficient for positioning the azimut.
 You just have to position the sat finder in a general south facing direction. Thats all.
 
-The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should work also.
+The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here an actuator with 50 mm length. But 25 mm should work also.
 
 In addition to the 22 KHz logic, only four other items are required:
 
