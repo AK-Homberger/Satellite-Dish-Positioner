@@ -38,7 +38,7 @@ Please change this for other satellites.
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
 With the web interface you can control the positioner. You can do fine tuning for azimut/elevation and switch automatic contol between Off, On and R-Off.
-R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the diseqc motor is a bit noisy when constantly re-positioning. The "-Step/+Step" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
+R-Off means only automatic control for azimut is switched off. Elevation remains on. The is a kind of "night" mode because the diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
@@ -74,7 +74,7 @@ For the 22KHz signal generator:
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 
 
-Version 0.1 - 25.10.2010: Initial version. Complete schematic and OpenSCAD files will follow.
+Version 0.1 - 25.10.2010: Initial version. Complete schematic will follow.
 
 
 
