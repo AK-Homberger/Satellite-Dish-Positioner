@@ -42,7 +42,7 @@
 const char* ssid = "ssid";
 const char* password = "password";
 
-float Astra_Az = 164.33, Astra_El = 30.19, El_Offset=22.09;   // Astra 19.2 position and dish specific offset
+float Astra_Az = 164.33, Astra_El = 30.19, El_Offset=-22.09;   // Astra 19.2 position and dish specific offset
 
 float Azimut = 0, Elevation = 0;
 float sAzimut = 0, sElevation = 0;
@@ -504,7 +504,7 @@ void loop(void) {
     if (Azimut < 0) Azimut += 360;
   }
 
-  Elevation = -round((mpu.GetAngX() - El_Offset) * 10) / 10;
+  Elevation = -round((mpu.GetAngX() + El_Offset) * 10) / 10;
   if (Elevation < 0 ) Elevation = 0;
 
   if (auto_on) {
