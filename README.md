@@ -11,7 +11,7 @@ The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this pr
 
 The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the Diseqc standard. The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
 
-The motor gets the power voltage also via the coax connection. 
+The motor gets the 12 Volt power also via the coax connection. 
 
 The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. That is more than sufficient for positioning the azimut.
 You just have to position the sat finder in a general south facing direction. Thats all.
