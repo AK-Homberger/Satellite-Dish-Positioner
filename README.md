@@ -48,9 +48,10 @@ The connection between the sat dish and the rotor as well as the other parts are
 
 The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to south direction. For other directions do a correction in the code (I had to add 90 degrees to get south direction, 180°).
 
+![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
+
 The connection between the dish and the Diseqc motor has to be very stable. I used 0.2 mm accuracy and 70% fillrate for PLA. Use of ABS is also an option.
 
-![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
 
 ![Bottom](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SCAD/SatFinderUnten.png)
 
