@@ -35,7 +35,7 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 The device is pre-configured for Astra 19.2. Translated to stadard navigational compass coordinates this is 166° and elevation to horizontal is 7.4° (fully correct would be -7.4). Please change this for other satellites.
-You can use one of the fre calculatores to get the angles for your location and desired setellite (https://www.satlex.us/en/azel_calc.html).
+You can use one of the fre calculatores to get the angles for your location and desired setellite (https://www.satlex.us/en/azel_calc.html). Use "Polarmount hour angle" and "Declination angle".
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
