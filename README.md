@@ -84,8 +84,9 @@ For the 22 KHz signal generator:
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 
 
-- Version 0.3 - 26.10.2010: Separated elevation and offset to work with true elevation angles from calculators. 
-- Version 0.2 - 26.10.2010: Initial version. 
+Version 0.3 - 26.10.2010: Separated elevation and offset to work with true elevation angles from calculators. 
+
+Version 0.2 - 26.10.2010: Initial version. 
 
 
 
