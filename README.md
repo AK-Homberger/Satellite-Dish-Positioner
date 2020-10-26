@@ -7,6 +7,7 @@ This is an automatical satellite dish positioner with Wemos D1, compass and MPU.
 
 The purpose of this device is to support me on the boat with the positioning of the satellite dish from the cabin. But it is also usable for campers and mobile homes.
 
+## Hardware
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance. We have to remove the cranked dish connection tube from the motor. But keep the bolt and the nut. We need them to connect the upper and lower 3D-printed joint parts. 
 
 The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the [Diseqc specification](https://de.eutelsat.com/en/support/technical-support/diseqc.html). The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
@@ -33,6 +34,7 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 
 ![Schematic](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatFinderSchematic.png)
 
+## Software
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 
 The device is pre-configured for Astra 19.2 and my home location. Please change this for your location and satellite.
@@ -48,6 +50,7 @@ With the web interface you can control the positioner. You can do fine tuning fo
 
 R-Off means automatic control for azimut is switched off. Elevation remains on. This is a kind of "night" mode because the Diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
+## 3D Prints
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
 ![Connection](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1404.jpg)
@@ -67,8 +70,7 @@ The connection between the dish and the Diseqc motor has to be very stable. I us
 
 ![Top](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SCAD/SatFinderOben.png)
 
-Parts:
-
+## Parts
 - Sat dish: [Link](https://www.ebay.de/itm/Telestar-5103309-Camping-SAT-Anlage-ohne-Receiver-Teilnehmer-Anzahl-1-/193630407517#couponcode=ebay-voucher20183)
 - Diseqc motor: [Link](https://www.ebay.de/itm/332284938131?chn=ps&norover=1&mkevt=1&mkrid=707-134425-41852-0&mkcid=2&itemid=332284938131&targetid=940585975411&device=c&mktype=pla&googleloc=9043858&poi=&campaignid=10203814992&mkgroupid=101937413437&rlsatarget=pla-940585975411&abcId=1145992&merchantid=112028706&gclid=EAIaIQobChMIg57du6jQ7AIVRtiyCh0ixQoGEAQYAyABEgJfgvD_BwE)
 - Linear Actuator (25 or 50 mm): [Link](https://www.ebay.de/itm/750N-25-150-mm-Linear-Actuator-elektrische-Mikro-Linearantrieb-12V-Kraft-IP65/402438285052?_trkparms=aid%3D555021%26algo%3DPL.SIMRVI%26ao%3D1%26asc%3D225078%26meid%3De5d8f347c09a4ba989a35d0217f8cb5c%26pid%3D100008%26rk%3D1%26rkt%3D11%26mehot%3Dpf%26sd%3D383778548269%26itm%3D402438285052%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3DSimplRVIAMLv5WebWithPLRVIOnTopCombiner&_trksid=p2047675.c100008.m2219)
@@ -86,9 +88,9 @@ For the 22 KHz signal generator:
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 
 
-Version 0.3 - 26.10.2010: Separated elevation and offset to work with true elevation angles from calculators. 
-
-Version 0.2 - 26.10.2010: Initial version. 
+## Updates
+- Version 0.3 - 26.10.2010: Separated elevation and offset to work with true elevation angles from calculators. 
+- Version 0.2 - 26.10.2010: Initial version. 
 
 
 
