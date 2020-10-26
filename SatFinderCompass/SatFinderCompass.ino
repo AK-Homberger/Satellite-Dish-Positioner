@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.2, 26.10.2020, AK-Homberger
+// Version 0.3, 26.10.2020, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -42,7 +42,7 @@
 const char* ssid = "ssid";
 const char* password = "password";
 
-float Astra_Az = 164, Astra_El = 8.1;   // Astra 19.2 position
+float Astra_Az = 164.33, Astra_El = 30.19, El_Offset=22.09;   // Astra 19.2 position and dish specific offset
 
 float Azimut = 0, Elevation = 0;
 float sAzimut = 0, sElevation = 0;
@@ -403,12 +403,9 @@ void write_byte_with_parity(byte x) {
 void goto_angle(float a) {
   /*
     Note the diseqc "goto x.x" command is not well documented.
-    The decription in http://www.eutelsat.com/satellites/4_5_5.html
-    is for 'terrestrial positioners' rather than satellite positioners
-    Which drives use the terrestial command set and which use the satellite
-    set is not clear, but various web resources, including
-    http://www.techwatch.co.uk/forums/14112-raw-diseqc-1-2-commands-a-rough-guide.html
-    indicate the following is right for the satellite set:
+    The general decription is available at https://de.eutelsat.com/en/support/technical-support/diseqc.html
+    See "Positioner Application Note.pdf".
+    
   */
 
   byte n1, n2, n3, n4, d1, d2;
@@ -507,7 +504,7 @@ void loop(void) {
     if (Azimut < 0) Azimut += 360;
   }
 
-  Elevation = -round(mpu.GetAngX() * 10) / 10;
+  Elevation = -round((mpu.GetAngX() - El_Offset) * 10) / 10;
   if (Elevation < 0 ) Elevation = 0;
 
   if (auto_on) {
