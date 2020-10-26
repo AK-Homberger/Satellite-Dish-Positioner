@@ -21,8 +21,8 @@ The elevation is controlled with a standard small linear actuator which is avail
 In addition to the 22 KHz logic, only four other items are required:
 
 - Step-down-converter 12V to 5V: D24V10F5
-- Compass: GY-271 from AzDelivery (use [QMC5883LCompass](https://github.com/mprograms/QMC5883LCompass) library in Arduino)
-- 6 axis gyroscope: GY-521 from AzDelivery (use [TinyMPU6050](https://github.com/gabriel-milan/TinyMPU6050) library in Arduino):
+- Compass: GY-271 from AzDelivery (install [QMC5883LCompass](https://github.com/mprograms/QMC5883LCompass) library in Arduino)
+- 6 axis gyroscope: GY-521 from AzDelivery (install [TinyMPU6050](https://github.com/gabriel-milan/TinyMPU6050) library in Arduino):
 - Motor driver:  Adafruit DRV8871 DC Motor Driver
 
 The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
