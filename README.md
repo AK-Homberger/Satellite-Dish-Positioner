@@ -7,7 +7,7 @@ This is an automatical satellite dish positioner with Wemos D1, compass and MPU.
 
 The purpose of this device is to support me on the boat with the positioning of the satellite dish from the cabin. But it is also usable for campers and mobile homes.
 
-The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance. We have to remove the kinked dish connection tube from the motor. But keep the bolt and the nut. We need it to connect the upper and lower 3D-printed joint parts. 
+The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance. We have to remove the cranked dish connection tube from the motor. But keep the bolt and the nut. We need it to connect the upper and lower 3D-printed joint parts. 
 
 The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the [Diseqc specification](https://de.eutelsat.com/en/support/technical-support/diseqc.html). The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
 
