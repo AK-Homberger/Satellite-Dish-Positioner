@@ -13,7 +13,7 @@ The ESP12 (in Wemos D1 Mini) controls the Diseqc motor with 22Khz tone signals a
 
 The motor gets the power voltage also via the coax connection. 
 
-The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. Which is more than sufficient for positioning the azimut.
+The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. That is more than sufficient for positioning the azimut.
 You just have to position the sat finder in a general south facing direction. Thats all.
 
 The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here a actuator with 50 mm length. But 25 mm should work also.
