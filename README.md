@@ -35,7 +35,7 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 The device is pre-configured for Astra 19.2 and my home location. Translated to standard navigational compass coordinates this is 164° and elevation to horizontal is 8.1° (fully correct would be -7.4°). Please change this for your location and satellite.
-You can use one of the free calculatores to get the angles for your location and desired setellite (e.g. https://www.satlex.us/en/azel_calc.html). Use "Azimut angle" and "Declination angle". The true north Azimut angle needs to be corrected to match the magnetic nort of the compass (sailors should know how to calculate);-
+You can use one of the free calculatores to get the angles for your location and desired setellite (e.g. https://www.satlex.us/en/azel_calc.html). Use "Azimut angle" and "Declination angle". The true north Azimut angle needs to be corrected to match the magnetic nort of the compass (sailors should know how to calculate);-).
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
