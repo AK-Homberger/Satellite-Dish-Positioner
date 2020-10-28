@@ -40,9 +40,17 @@ The positioner is controlled with a web interface. The ssid and password for WLA
 The device is pre-configured for Astra 19.2 and my home location. Please change this for your location and satellite.
 You can use one of the free calculators to get the angles for your location and desired setellite (e.g. https://www.satlex.us/en/azel_calc.html). Use "Azimut angle" and "Elevation angle". 
 
-The true north azimut angle needs to be corrected to match the magnetic north of the compass (sailors should know how to calculate). But you can also use the "Delta Azimut" setting to correct the position. 
+The true north azimut angle needs to be corrected (Az_Offset) to match the magnetic north of the compass (sailors should know how to calculate) and to correct a possible placing error on the pcb. 
 
-The elevation angle must be corrected with a dish specific value. For my dish this is about -20 degrees between dish beam angle and angle of gyroscope mount. The offset has to be calculated only once and defined in the program.
+The elevation angle must be corrected (El_Offset) with a dish specific value. For my dish this is -18 degrees between dish beam angle and angle of gyroscope mount. The offset has to be calculated only once and defined in the program.
+
+```cpp
+//Enter your SSID and PASSWORD
+const char* ssid = "ssid";
+const char* password = "passwod";
+
+float Astra_Az = 164, Astra_El = 30.19, El_Offset=-18, Az_Offset=-10.0;   // Astra 19.2 position and dish specific offsets
+```
 
 ![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
 
