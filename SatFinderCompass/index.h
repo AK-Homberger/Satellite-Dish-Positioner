@@ -119,7 +119,7 @@ table {
     <tr><td style="text-align:right;">Delta Azimut:</td><td style="color:white;"><span id='d_azimut'></span> °</td></tr>
   </table>
     
-  <p>-50<input type="range" min="-50" max="50" step="1" value="0" class="slider" id="myAzRange">+50</p>
+  <p>-50<input type="range" min="-50" max="50" step="0.5" value="0" class="slider" id="myAzRange">+50</p>
     
   <p>
     <input type="button" class="button" value="Down" onclick="button_clicked('az_down')">

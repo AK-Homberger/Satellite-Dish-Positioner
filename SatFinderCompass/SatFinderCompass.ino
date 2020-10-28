@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.3, 26.10.2020, AK-Homberger
+// Version 0.4, 28.10.2020, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -34,7 +34,7 @@
 #define datapin D5      // Digital pin for 22 kHz signal D5
 #define motor1 D6       // Linear Actuator 1
 #define motor2 D0       // Linear Actuator 2
-#define motorSpeed 800  // Actuator speed
+#define motorSpeed 800  // Actuator speed     // Change (lower) this if dish is begining to swing
 #define UP 1
 #define DOWN 2
 
@@ -42,7 +42,7 @@
 const char* ssid = "ssid";
 const char* password = "password";
 
-float Astra_Az = 164.33, Astra_El = 30.19, El_Offset=-22.09;   // Astra 19.2 position and dish specific offset
+float Astra_Az = 164, Astra_El = 30.19, El_Offset=-18, Az_Offset=-10.0;   // Astra 19.2 position and dish specific offsets
 
 float Azimut = 0, Elevation = 0;
 float sAzimut = 0, sElevation = 0;
@@ -73,7 +73,7 @@ void setup(void) {
   Serial.println("Initialise Compass and MPU...");
 
   compass.init();
-  //compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);
+  compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);   // Do a calibration for the compass and put your values here!!!
   compass.setSmoothing(10, true);
 
   // MPU Initialization
@@ -168,7 +168,7 @@ void handleGetData() {
   root["d_azimut"] = dAzimut;
   root["d_elevation"] = dElevation;
 
-  root["rotor"] = RotorPos;
+  root["rotor"] = IsRotor;
   root["led_level"] = LED_level;
 
   if (auto_on) root["state"] = "On"; else root["state"] = "Off";
@@ -188,14 +188,14 @@ void handleCal() {
 
 
 void handleAzDown() {
-  if (dAzimut > -50) dAzimut -= 1;
+  if (dAzimut > -50) dAzimut -= 0.5;
   update_rotor = true;
   server.send(200, "text/html");
 }
 
 
 void handleAzUp() {
-  if (dAzimut < 50) dAzimut += 1;
+  if (dAzimut < 50) dAzimut += 0.5;
   update_rotor = true;
   server.send(200, "text/html");
 }
@@ -217,9 +217,6 @@ void handleRotorDown() {
   if (RotorPos > -70) RotorPos -= 1;
   update_rotor = true;
   server.send(200, "text/html");
-  comp_on_time = millis() + 1000;
-  rotor_changed = true;
-
 }
 
 
@@ -227,8 +224,6 @@ void handleRotorUp() {
   if (RotorPos < 70) RotorPos += 1;
   update_rotor = true;
   server.send(200, "text/html");
-  comp_on_time = millis() + 1000;
-  rotor_changed = true;
 }
 
 
@@ -242,6 +237,7 @@ void handleRotorDownStep() {
   server.send(200, "text/html");
   comp_on_time = millis() + 1000;
   rotor_changed = true;
+  IsRotor=IsRotor+1.0/8.0;
 }
 
 
@@ -255,6 +251,7 @@ void handleRotorUpStep() {
   server.send(200, "text/html");
   comp_on_time = millis() + 1000;
   rotor_changed = true;
+  IsRotor=IsRotor-1.0/8.0;
 }
 
 
@@ -306,7 +303,7 @@ void handleSlider1() {
     dAzimut =  server.arg(0).toFloat();
     Serial.print("Azimut:");
     Serial.println(Azimut);
-    update_rotor = true;
+    //update_rotor = true;
   }
   server.send(200, "text/html");
 }
@@ -462,7 +459,7 @@ void motor(int direction) {
 
   if (direction == DOWN) {
     digitalWrite(motor1, LOW);
-    analogWrite(motor2, motorSpeed - 300);
+    analogWrite(motor2, motorSpeed - 500);
     delay(10);
     mpu.Execute();
     Y = round(mpu.GetAngX() * 10) / 10;
@@ -472,14 +469,16 @@ void motor(int direction) {
   digitalWrite(motor2, HIGH);
 
   delay(10);
-  comp_on_time = millis() + 500;
-  rotor_changed = true;
+  //comp_on_time = millis() + 500;
+  //rotor_changed = true;
   if ( X == Y ) motor_error++; else motor_error = 0;
 }
 
 
 
 void loop(void) {
+  float x,y;
+  
   server.handleClient();
   ArduinoOTA.handle();
   mpu.Execute();
@@ -500,10 +499,11 @@ void loop(void) {
   }
 
   if (!rotor_changed && !rotor_off)  {
-    Azimut = compass.getAzimuth() - 90;
-    if (Azimut < 0) Azimut += 360;
+    Azimut = compass.getAzimuth() - 90 - Az_Offset;
+    if (x < 0) x += 360;
+    if (x >360) x -=360;    
   }
-
+  
   Elevation = -round((mpu.GetAngX() + El_Offset) * 10) / 10;
   if (Elevation < 0 ) Elevation = 0;
 
@@ -512,7 +512,7 @@ void loop(void) {
     if (RotorPos > 70) RotorPos = 70;
     if (RotorPos < -70) RotorPos = -70;
 
-    if (motor_error < 10) {
+    if (motor_error < 20) {
       if (sElevation - Elevation > 0.3) {
         motor(UP);
       }
@@ -522,8 +522,8 @@ void loop(void) {
     }
   }
 
-  if ( abs(RotorPos - IsRotor) > 1 || update_rotor) {
-    comp_on_time = millis() + abs(RotorPos - IsRotor) * 1300;
+  if ((!rotor_off && abs(RotorPos - IsRotor) > 1) || update_rotor) {
+    comp_on_time = millis() + (abs(RotorPos - IsRotor) * 1700);
     rotor_changed = true;
 
     goto_angle(-RotorPos);
