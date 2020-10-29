@@ -34,6 +34,10 @@ The motor driver is using ports D0 and D6. The 22 KHz signal is generated on por
 
 ![Schematic](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatFinderSchematic.png)
 
+![PCB](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatFinderPCB.png)
+
+Schematics and PCB layout is in KiCAD folder.
+
 ## Software
 The positioner is controlled with a web interface. The ssid and password for WLAN has to be set in the code.
 
