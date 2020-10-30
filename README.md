@@ -99,7 +99,7 @@ For the 22 KHz signal generator:
 - Capacitor 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=150mkt563k2e%20)
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 - Connector 2-pin (*2) [Link](https://www.reichelt.de/de/en/2-pin-terminal-strip-spacing-3-5-akl-059-02-p36598.html?&nbc=1)
-- connectpr 4-pin [Link](https://www.reichelt.de/de/en/4-pin-terminal-strip-spacing-3-5-akl-059-04-p36600.html?&nbc=1)
+- Connectpr 4-pin [Link](https://www.reichelt.de/de/en/4-pin-terminal-strip-spacing-3-5-akl-059-04-p36600.html?&nbc=1)
 
 
 ## Updates
