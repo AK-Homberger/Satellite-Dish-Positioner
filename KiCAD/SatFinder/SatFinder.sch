@@ -24707,8 +24707,6 @@ Connection ~ 3700 2400
 Wire Wire Line
 	3700 2400 5500 2400
 Wire Wire Line
-	3800 2050 3800 2500
-Wire Wire Line
 	2400 2600 3900 2600
 Wire Wire Line
 	3900 2600 3900 2050
@@ -24783,7 +24781,7 @@ U 1 1 5F9AC5B9
 P 1500 4600
 F 0 "J5" H 1418 4817 50  0000 C CNN
 F 1 "Power" H 1418 4726 50  0000 C CNN
-F 2 "Connector_Wago:Wago_734-132_1x02_P3.50mm_Vertical" H 1500 4600 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 1500 4600 50  0001 C CNN
 F 3 "~" H 1500 4600 50  0001 C CNN
 	1    1500 4600
 	-1   0    0    -1  
@@ -24811,7 +24809,7 @@ U 1 1 5F9B241B
 P 3800 1850
 F 0 "J2" V 3764 1562 50  0000 R CNN
 F 1 "GY-521" V 3673 1562 50  0000 R CNN
-F 2 "Connector_Wago:Wago_734-134_1x04_P3.50mm_Vertical" H 3800 1850 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-4_P5.08mm" H 3800 1850 50  0001 C CNN
 F 3 "~" H 3800 1850 50  0001 C CNN
 	1    3800 1850
 	0    -1   -1   0   
@@ -24822,7 +24820,7 @@ U 1 1 5F9B3609
 P 1500 6800
 F 0 "J6" H 1418 7017 50  0000 C CNN
 F 1 "Coax" H 1418 6926 50  0000 C CNN
-F 2 "Connector_Wago:Wago_734-132_1x02_P3.50mm_Vertical" H 1500 6800 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-2_P5.08mm" H 1500 6800 50  0001 C CNN
 F 3 "~" H 1500 6800 50  0001 C CNN
 	1    1500 6800
 	-1   0    0    -1  
@@ -26448,4 +26446,12 @@ Wire Wire Line
 Connection ~ 3150 4500
 Wire Wire Line
 	3150 4500 3700 4500
+Wire Wire Line
+	3800 2050 3800 2500
+Wire Wire Line
+	3800 1600 3800 1750
+Wire Wire Line
+	3800 1750 4600 1750
+Wire Wire Line
+	4600 1750 4600 1600
 $EndSCHEMATC
