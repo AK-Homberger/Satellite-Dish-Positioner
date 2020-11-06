@@ -10,7 +10,7 @@ The purpose of this device is to support me on the boat with the positioning of 
 ## Hardware
 The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this project we use the motor upside down to move the dish in horizontal ballance. We have to remove the cranked dish connection tube from the motor. But keep the bolt and the nut. We need them to connect the upper and lower 3D-printed joint parts. 
 
-The ESP8266 (in D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the [Diseqc specification](https://de.eutelsat.com/en/support/technical-support/diseqc.html). The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to port D5 on Wemos D1 is sufficient to generate a signal that the Diseqc moter is recognising.
+The ESP8266 (in D1 Mini) controls the Diseqc motor with 22 KHz tone signals as defined in the [Diseqc specification](https://de.eutelsat.com/en/support/technical-support/diseqc.html). The ESP12 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor directly connected to port D5 on D1 Mini is sufficient to generate a signal that the Diseqc moter is recognising.
 
 The motor gets the 12 Volt power also via the coax connection. Be careful with the coax connector when the device is powerd. A shortcut between core and shield would instantly destroy the inductor coil (it can only handle about 300 mA).
 
@@ -26,7 +26,7 @@ In addition to the 22 KHz logic, only four other items are required:
 - 6 axis gyroscope: GY-521 from AzDelivery (install [TinyMPU6050](https://github.com/gabriel-milan/TinyMPU6050) library in Arduino):
 - Motor driver:  Adafruit DRV8871 DC Motor Driver
 
-The compass and the gyroscope are connected to the I2C bus of the Wemos D1 (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
+The compass and the gyroscope are connected to the I2C bus of the D1 Mini (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
 
 The motor driver is using ports D0 and D6. The 22 KHz signal is generated on port D5.
 
