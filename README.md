@@ -103,7 +103,7 @@ For the 22 KHz signal generator:
 
 
 ## Updates
-- Version 0.4 - 06.11.2020: Changed PCB layout to version 1.1. Larger terminal böocks (5.08 mm).
+- Version 0.4 - 06.11.2020: Changed PCB layout to version 1.1. Larger terminal strips (5.08 mm).
 - Version 0.4 - 28.10.2020: Added permanent azimut offset.
 - Version 0.3 - 26.10.2010: Separated elevation and elevation offset to work with true elevation angles from calculators. 
 - Version 0.2 - 26.10.2010: Initial version. 
