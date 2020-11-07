@@ -1,7 +1,7 @@
 # Satellite Dish Positioner
 
 
-This is an automatical satellite dish positioner with ESP8266 D1 Mini, compass and MPU. It controls satellite dish direction with a Diseqc rotor (azimut) and linear actuator (elevation). It uses an gyroscope device for elevation and a compass device for azimut control.
+This is an automatical satellite dish positioner with ESP8266 D1 Mini, compass and MPU. It controls satellite the dish direction with a Diseqc rotor (azimut) and a linear actuator (elevation). It uses an gyroscope device for elevation and a compass device for azimut control.
 
 ![SatPositioner](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1403.jpg)
 
