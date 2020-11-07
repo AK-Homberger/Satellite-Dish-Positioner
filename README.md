@@ -91,8 +91,6 @@ The connection between the dish and the Diseqc motor has to be very stable. I us
 - GY-521 gyroscope: AzDelivery (e.g. on Amazon) [Link](https://www.amazon.de/stores/AZDelivery/AZDelivery/page/2DB821D9-4A4B-4FD2-A50B-AE111B57FC93)
 - D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
 - Adafruit DRV8871: [Link](https://eckstein-shop.de/Adafruit-DRV8871-DC-Motor-Driver-Breakout-Board-36A-Max)
-
-For the 22 KHz signal generator:
 - Resistor 51 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-51-ohm-1-4w-51-p1441.html?&nbc=1)
 - Resistor 100 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-100-ohms-1-4w-100-p1336.html?&nbc=1)
 - Inductor 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=bou%20rlb0914-102k)
