@@ -97,7 +97,7 @@ The connection between the dish and the Diseqc motor has to be very stable. I us
 - Capacitor 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=150mkt563k2e%20)
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 - Connector 2-pin (*2) [Link](https://www.reichelt.de/de/en/2-pin-terminal-strip-spacing-5-08-akl-101-02-p36605.html?&nbc=1)
-- Connectpr 4-pin [Link](https://www.reichelt.de/de/en/4-pin-terminal-strip-spacing-5-08-akl-101-04-p36607.html?&nbc=1)
+- Connector 4-pin [Link](https://www.reichelt.de/de/en/4-pin-terminal-strip-spacing-5-08-akl-101-04-p36607.html?&nbc=1)
 - DC Jack [Link](https://www.reichelt.de/de/en/connector-dc-female-bulkhead-delock-89911-p259483.html?&nbc=1)
 
 
