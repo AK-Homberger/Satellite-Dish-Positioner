@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.4, 28.10.2020, AK-Homberger
+// Version 0.5, 07.11.2020, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -39,10 +39,10 @@
 #define DOWN 2
 
 //Enter your SSID and PASSWORD
-const char* ssid = "ssid";
-const char* password = "password";
+const char* ssid = "hope";
+const char* password = "thisis123";
 
-float Astra_Az = 164, Astra_El = 30.19, El_Offset=-18, Az_Offset=-10.0;   // Astra 19.2 position and dish specific offsets
+float Astra_Az = 164, Astra_El = 30.19, El_Offset = -18, Az_Offset = -10.0; // Astra 19.2 position and dish specific offsets
 
 float Azimut = 0, Elevation = 0;
 float sAzimut = 0, sElevation = 0;
@@ -115,7 +115,7 @@ void setup(void) {
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
 
   experimental::ESP8266WiFiGratuitous::stationKeepAliveSetIntervalMs(5000);
-  
+
   // Arduino OTA config and start
   ArduinoOTA.setHostname("Satfinder");
   ArduinoOTA.begin();
@@ -237,7 +237,7 @@ void handleRotorDownStep() {
   server.send(200, "text/html");
   comp_on_time = millis() + 1000;
   rotor_changed = true;
-  IsRotor=IsRotor+1.0/8.0;
+  IsRotor = IsRotor + 1.0 / 8.0;
 }
 
 
@@ -251,7 +251,7 @@ void handleRotorUpStep() {
   server.send(200, "text/html");
   comp_on_time = millis() + 1000;
   rotor_changed = true;
-  IsRotor=IsRotor-1.0/8.0;
+  IsRotor = IsRotor - 1.0 / 8.0;
 }
 
 
@@ -261,7 +261,7 @@ void handleOn() {
   server.send(200, "text/html");
   auto_on = true;
   rotor_off = false;
-  motor_error = 0;  
+  motor_error = 0;
 }
 
 
@@ -283,9 +283,9 @@ void handleOff() {
 
 void handleRotorOff() {
   rotor_off = true;
-  
+
   server.send(200, "text/html");
-  
+
   noInterrupts();
   write_byte_with_parity(0xE0);
   write_byte_with_parity(0x31);
@@ -402,7 +402,7 @@ void goto_angle(float a) {
     Note the diseqc "goto x.x" command is not well documented.
     The general decription is available at https://de.eutelsat.com/en/support/technical-support/diseqc.html
     See "Positioner Application Note.pdf".
-    
+
   */
 
   byte n1, n2, n3, n4, d1, d2;
@@ -475,10 +475,7 @@ void motor(int direction) {
 }
 
 
-
 void loop(void) {
-  float x,y;
-  
   server.handleClient();
   ArduinoOTA.handle();
   mpu.Execute();
@@ -500,10 +497,10 @@ void loop(void) {
 
   if (!rotor_changed && !rotor_off)  {
     Azimut = compass.getAzimuth() - 90 - Az_Offset;
-    if (x < 0) x += 360;
-    if (x >360) x -=360;    
+    if (Azimut < 0) Azimut += 360;
+    if (Azimut > 360) Azimut -= 360;
   }
-  
+
   Elevation = -round((mpu.GetAngX() + El_Offset) * 10) / 10;
   if (Elevation < 0 ) Elevation = 0;
 
@@ -523,7 +520,7 @@ void loop(void) {
   }
 
   if ((!rotor_off && abs(RotorPos - IsRotor) > 1) || update_rotor) {
-    comp_on_time = millis() + (abs(RotorPos - IsRotor) * 1700);
+    comp_on_time = millis() + (abs(RotorPos - IsRotor) * 700);
     rotor_changed = true;
 
     goto_angle(-RotorPos);
@@ -532,5 +529,5 @@ void loop(void) {
     IsRotor = RotorPos;
     update_rotor = false;
   }
-delay(10);
+  delay(10);
 }
