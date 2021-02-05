@@ -69,6 +69,8 @@ Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Set
 ## 3D Prints
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
+You can either use the .scad files with OpenSCAD or you can directly print the .stl files stored [here}(https://github.com/AK-Homberger/Satellite-Dish-Positioner/tree/main/SCAD/STL)
+
 ![Connection](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1404.jpg)
 
 ![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
