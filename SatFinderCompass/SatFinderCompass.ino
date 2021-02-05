@@ -16,13 +16,14 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.5, 07.11.2020, AK-Homberger
+// Version 0.6, 05.02.2021, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 #include <ESP8266WiFiGratuitous.h>
 #include <ArduinoOTA.h>
+#include <EEPROM.h>
 #include <TinyMPU6050.h>
 #include <QMC5883LCompass.h>
 
@@ -34,7 +35,6 @@
 #define datapin D5      // Digital pin for 22 kHz signal D5
 #define motor1 D6       // Linear Actuator 1
 #define motor2 D0       // Linear Actuator 2
-#define motorSpeed 800  // Actuator speed     // Change (lower) this if dish is begining to swing
 #define UP 1
 #define DOWN 2
 
@@ -43,6 +43,8 @@ const char* ssid = "ssid";
 const char* password = "password";
 
 float Astra_Az = 164, Astra_El = 30.19, El_Offset = -18, Az_Offset = -10.0; // Astra 19.2 position and dish specific offsets
+
+int motorSpeed = 700;  // Actuator speed     // Change (lower) this if dish is begining to swing
 
 float Azimut = 0, Elevation = 0;
 float sAzimut = 0, sElevation = 0;
@@ -139,10 +141,32 @@ void setup(void) {
   server.on("/slider2", handleSlider2);
   server.on("/slider3", handleSlider3);
 
+  server.on("/settings", handleSettings);
+  server.on("/get_settings", handleGetSettings);
+  server.on("/set_settings", handleSetSettings);
+
   server.onNotFound(handleNotFound);
 
   server.begin();                  //Start server
   Serial.println("HTTP server started");
+
+  EEPROM.begin(128);
+  float tmp = 0;
+
+  EEPROM_Read(&tmp, 0);
+  if (abs(tmp) <= 180) Astra_Az = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float));
+  if ( (tmp > 0) && (tmp < 80) ) Astra_El = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 2);
+  if (abs(tmp) < 90) El_Offset = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 3);
+  if (abs(tmp) < 90) Az_Offset = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 4);
+  if ((tmp > 0) && (tmp < 1024)) motorSpeed = trunc(tmp);
 
   sAzimut = Astra_Az;
   sElevation = Astra_El;
@@ -151,6 +175,58 @@ void setup(void) {
 
 void handleRoot() {
   server.send(200, "text/html", MAIN_page); //Send web page
+}
+
+void handleSettings() {
+  server.send(200, "text/html", Settings_page); //Send settings web page
+}
+
+
+void handleGetSettings() {
+  String Text;
+
+  StaticJsonDocument<300> root;
+
+  root["azimut"] = Astra_Az;
+  root["elevation"] = Astra_El;
+  root["el_offset"] = El_Offset;
+  root["az_offset"] = Az_Offset;
+  root["motor_speed"] = motorSpeed;
+
+  serializeJsonPretty(root, Text);
+  server.send(200, "text/plain", Text); //Send values to client ajax request
+}
+
+
+void handleSetSettings() {
+  float tmp;
+
+  if (server.args() > 3) {
+    
+    tmp = server.arg(0).toFloat();
+    if (abs(tmp) <= 180) Astra_Az = tmp;
+
+    tmp = server.arg(1).toFloat();
+    if ( (tmp > 0) && (tmp <= 80) ) Astra_El = tmp;
+
+    tmp = server.arg(2).toFloat();
+    if (abs(tmp) <= 90) El_Offset = tmp;
+
+    tmp = server.arg(3).toFloat();
+    if (abs(tmp) <= 90) Az_Offset = tmp;
+
+    tmp = server.arg(4).toFloat();
+    if ((tmp > 0) && (tmp < 1024)) motorSpeed = trunc(tmp);
+  }
+
+  EEPROM_Write(&Astra_Az, 0);
+  EEPROM_Write(&Astra_El, sizeof(float));
+  EEPROM_Write(&El_Offset, sizeof(float) * 2);
+  EEPROM_Write(&Az_Offset, sizeof(float) * 3);
+  EEPROM_Write(&tmp, sizeof(float) * 4);
+
+  EEPROM.commit();
+  server.send(200, "text/html");
 }
 
 
@@ -332,6 +408,26 @@ void handleSlider3() {
 
 void handleNotFound() {                                           // Unknown request. Send error 404
   server.send(404, "text/plain", "File Not Found\n\n");
+}
+
+void EEPROM_Write(float *num, int MemPos)
+{
+  byte ByteArray[4];
+  memcpy(ByteArray, num, 4);
+  for (int x = 0; x < 4; x++)
+  {
+    EEPROM.write((MemPos * 4) + x, ByteArray[x]);
+  }
+}
+
+void EEPROM_Read(float *num, int MemPos)
+{
+  byte ByteArray[4];
+  for (int x = 0; x < 4; x++)
+  {
+    ByteArray[x] = EEPROM.read((MemPos * 4) + x);
+  }
+  memcpy(num, ByteArray, 4);
 }
 
 
