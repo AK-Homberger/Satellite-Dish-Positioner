@@ -348,7 +348,7 @@ table {
 <body style="font-family: verdana,sans-serif" BGCOLOR="#819FF7">
 
   <table>
-    <tr><td style="text-align:right;">Azimut (+/-180):</td><td style="color:white;"><input type="text" style="width:80px"; id="azimut"></td></tr>
+    <tr><td style="text-align:right;">Azimut (0-270):</td><td style="color:white;"><input type="text" style="width:80px"; id="azimut"></td></tr>
     <tr><td style="text-align:right;">Elevation (0-80):</td><td style="color:white;"><input type="text" style="width:80px"; id="elevation"></td></tr>
     <tr></tr>    
     <tr><td style="text-align:right;">Azimut Offset (+/-90):</td><td style="color:white;"><input type="text" style="width:80px"; id="az_offset"></td></tr>
