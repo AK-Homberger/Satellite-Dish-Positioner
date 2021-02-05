@@ -62,6 +62,10 @@ With the web interface you can control the positioner. You can do fine tuning fo
 
 R-Off means automatic control for azimut is switched off. Elevation remains on. This is a kind of "night" mode because the Diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
+Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Settings" web page.
+
+![Settings](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWebSettings.png).
+
 ## 3D Prints
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
