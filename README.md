@@ -56,7 +56,7 @@ const char* password = "passwod";
 float Astra_Az = 164, Astra_El = 30.19, El_Offset=-18, Az_Offset=-10.0;   // Astra 19.2 position and dish specific offsets
 ```
 
-![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/StatfinderWeb.png)
+![WebInterface](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWeb.png)
 
 With the web interface you can control the positioner. You can do fine tuning for azimut/elevation and switch automatic control between Off, On and R-Off.
 
