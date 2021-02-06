@@ -154,7 +154,7 @@ void setup(void) {
   float tmp = 0;
 
   EEPROM_Read(&tmp, 0);
-  if ((tmp >= 0) && (tmp <= 270)) Astra_Az = tmp;
+  if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
 
   EEPROM_Read(&tmp, sizeof(float));
   if ( (tmp >= 0) && (tmp < 80) ) Astra_El = tmp;
@@ -166,7 +166,7 @@ void setup(void) {
   if (abs(tmp) < 90) Az_Offset = tmp;
 
   EEPROM_Read(&tmp, sizeof(float) * 4);
-  if ((tmp >= 0) && (tmp < 1024)) motorSpeed = trunc(tmp);
+  if ((tmp >= 500) && (tmp < 1024)) motorSpeed = trunc(tmp);
 
   sAzimut = Astra_Az;
   sElevation = Astra_El;
@@ -204,7 +204,7 @@ void handleSetSettings() {
   if (server.args() > 3) {
 
     tmp = server.arg(0).toFloat();
-    if ((tmp >= 0) && (tmp <= 270)) Astra_Az = tmp;
+    if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
 
     tmp = server.arg(1).toFloat();
     if ( (tmp >= 0) && (tmp <= 80) ) Astra_El = tmp;
@@ -216,7 +216,7 @@ void handleSetSettings() {
     if (abs(tmp) <= 90) Az_Offset = tmp;
 
     tmp = server.arg(4).toFloat();
-    if ((tmp >= 0) && (tmp < 1024)) motorSpeed = trunc(tmp);
+    if ((tmp >= 500) && (tmp < 1024)) motorSpeed = trunc(tmp);
   }
 
   EEPROM_Write(&Astra_Az, 0);
