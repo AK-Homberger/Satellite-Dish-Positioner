@@ -349,7 +349,7 @@ table {
 
   <table>
     <tr><td style="text-align:right;">Azimut (90-270):</td><td style="color:white;"><input type="text" style="width:80px"; id="azimut"></td></tr>
-    <tr><td style="text-align:right;">Elevation (0-80):</td><td style="color:white;"><input type="text" style="width:80px"; id="elevation"></td></tr>
+    <tr><td style="text-align:right;">Elevation (10-50):</td><td style="color:white;"><input type="text" style="width:80px"; id="elevation"></td></tr>
     <tr></tr>    
     <tr><td style="text-align:right;">Azimut Offset (+/-90):</td><td style="color:white;"><input type="text" style="width:80px"; id="az_offset"></td></tr>
     <tr><td style="text-align:right;">Elevation Offset (+/-90):</td><td style="color:white;"><input type="text" style="width:80px"; id="el_offset"></tr>

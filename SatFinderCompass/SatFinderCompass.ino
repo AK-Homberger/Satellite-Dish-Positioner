@@ -157,7 +157,7 @@ void setup(void) {
   if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
 
   EEPROM_Read(&tmp, sizeof(float));
-  if ( (tmp >= 0) && (tmp < 80) ) Astra_El = tmp;
+  if ( (tmp >= 10) && (tmp < 50) ) Astra_El = tmp;
 
   EEPROM_Read(&tmp, sizeof(float) * 2);
   if (abs(tmp) < 90) El_Offset = tmp;
@@ -207,7 +207,7 @@ void handleSetSettings() {
     if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
 
     tmp = server.arg(1).toFloat();
-    if ( (tmp >= 0) && (tmp <= 80) ) Astra_El = tmp;
+    if ( (tmp >= 10) && (tmp <= 50) ) Astra_El = tmp;
 
     tmp = server.arg(2).toFloat();
     if (abs(tmp) <= 90) El_Offset = tmp;
