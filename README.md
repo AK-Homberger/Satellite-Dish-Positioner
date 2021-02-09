@@ -75,7 +75,7 @@ You can either use the .scad files with OpenSCAD or you can directly print the .
 
 ![Back](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1409.jpg)
 
-The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to south direction. For other directions do a correction in the code (I had to add 90 degrees to get south direction, 180°).
+The GY-521 gyroscope is placed on the back of the dish in a hoizonal position. The compass is on the pcb facing to south direction. For other directions do a correction in the code with "#define Az_PCB_Correction 90". I had to add 90 degrees to get south direction, 180°.
 
 ![Gyroscope](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1410.jpg)
 
