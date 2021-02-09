@@ -62,7 +62,7 @@ With the web interface you can control the positioner. You can do fine tuning fo
 
 R-Off means automatic control for azimut is switched off. Elevation remains on. This is a kind of "night" mode because the Diseqc motor is a bit noisy when constantly re-positioning. The "-Step/Step+" buttons are changing the rotor for 1/8 degree. Which should be sufficient for the desired purpose. It is possible to change it also to 1/16 degree.
 
-Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Settings" web page. Changed values are stored in flash memory (EEPROM) of ESP8266. With "Motor Speed" you can define the speed of the linear actuator. The value should be about 700 and defines the Pulse With Modulation for the actuator. If the dish begins to "swing" you can adjust the value to avoid this.
+Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Settings" web page. Changed values are stored in flash memory (EEPROM) of ESP8266. With "Motor Speed" you can define the speed of the linear actuator. The value should be about 700 and defines the Pulse Width Modulation for the actuator. If the dish begins to "swing" you can adjust the value to avoid this.
 
 ![Settings](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWebSettings.png).
 
