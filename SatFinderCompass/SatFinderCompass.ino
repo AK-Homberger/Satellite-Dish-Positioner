@@ -38,6 +38,8 @@
 #define UP 1
 #define DOWN 2
 
+#define Az_PCB_Correction 90  // Correction for compass direction of pcb mount
+
 //Enter your SSID and PASSWORD
 const char* ssid = "ssid";
 const char* password = "password";
@@ -592,7 +594,7 @@ void loop(void) {
   }
 
   if (!rotor_changed && !rotor_off)  {
-    Azimut = compass.getAzimuth() - 90 - Az_Offset;
+    Azimut = compass.getAzimuth() - Az_PCB_Correction - Az_Offset;
     if (Azimut < 0) Azimut += 360;
     if (Azimut > 360) Azimut -= 360;
   }
