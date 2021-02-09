@@ -108,6 +108,7 @@ The connection between the dish and the Diseqc motor has to be very stable. I us
 
 
 ## Updates
+- Version 1.0 - 09.02.2021: Added pcb mount correction value. Release version 1.0
 - Version 0.6 - 05.02.2021: Added settings page and storage of settings in flash memory.
 - Version 0.5 - 07.11.2020: Corrected error in azimut calculation (boundary check 0-360).
 - Version 0.4 - 06.11.2020: Changed PCB layout to version 1.1. Larger terminal strips (5.08 mm).
