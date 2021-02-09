@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 0.6, 05.02.2021, AK-Homberger
+// Version 1.0, 09.02.2021, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
