@@ -100,7 +100,7 @@ The connection between the dish and the Diseqc motor has to be very stable. I us
 - Resistor 51 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-51-ohm-1-4w-51-p1441.html?&nbc=1)
 - Resistor 100 Ohm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-100-ohms-1-4w-100-p1336.html?&nbc=1)
 - Inductor 1 mH - BOU RLB0914-102K [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=bou%20rlb0914-102k)
-- Capacitor 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=150mkt563k2e%20)
+- Capacitor 56 nF - RND 150MKT563K2E [Link](https://www.reichelt.de/index.html?ACTION=446&LA=0&nbc=1&q=150mkt563k2e%20) or alternative MKP-X2 56N2 [Link](https://www.reichelt.de/de/en/radio-interference-suppression-capacitors-56nf-305v-rm15-mkp-x2-56n2-p173414.html?&nbc=1)
 - Capacitor 3,3 µF - TON 3,3/63 [Link](https://www.reichelt.de/index.html?ACTION=446&LA=446&nbc=1&q=ton%203%2C3%2F63)
 - Connector 2-pin (*2) [Link](https://www.reichelt.de/de/en/2-pin-terminal-strip-spacing-5-08-akl-101-02-p36605.html?&nbc=1)
 - Connector 4-pin [Link](https://www.reichelt.de/de/en/4-pin-terminal-strip-spacing-5-08-akl-101-04-p36607.html?&nbc=1)
