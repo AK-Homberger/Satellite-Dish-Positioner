@@ -40,15 +40,15 @@ difference(){
 }
 
 
-translate([-7.5, 10, 15]){
+translate([-7.5, 10, 10]){
     rotate([-90, 0, 0]){
         difference(){
             difference(){
                  union(){
-                    cube([15, 15, 7]);
-                    translate([0, 15/2, 7.5]){
+                    cube([15, 10, 7]);
+                    translate([0, 10/2, 7.5]){
                         rotate([0, 90, 0]){
-                        cylinder(h = 15, r1=15/2, r2 =15/2, $fn=200);     
+                        cylinder(h = 15, r1=10/2, r2 =10/2, $fn=200);     
                         }
                     }    
                 }
@@ -57,7 +57,7 @@ translate([-7.5, 10, 15]){
                     cube([8.5, 17, 15]);
                     }    
                 }
-                translate([-1, 15/2, (15+7.5)/2]){
+                translate([-1, 10/2, (15+5)/2]){
                     rotate([0, 90, 0]){
                         cylinder(h = 17, r1=4/2, r2 =4/2, $fn=200); 
                     }
