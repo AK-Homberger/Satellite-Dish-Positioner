@@ -26,7 +26,7 @@ In addition to the 22 KHz logic, only four other items are required:
 - 6 axis gyroscope: GY-521 from AzDelivery (install [TinyMPU6050](https://github.com/gabriel-milan/TinyMPU6050) library in Arduino):
 - Motor driver:  Adafruit DRV8871 DC Motor Driver
 
-**Be carful with the GY-271 from other sources. Some devices are using a HMC5883L compass instead of QMC5883L. We need the QMC5883L for this project.**
+**Be careful with the GY-271 from other sources. Some devices are using a HMC5883L compass instead of a QMC5883L. We need the QMC5883L for this project.**
 
 The compass and the gyroscope are connected to the I2C bus of the D1 Mini (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
 
