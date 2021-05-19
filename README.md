@@ -19,7 +19,7 @@ You just have to position the sat finder in a general south facing direction. Th
 
 The elevation is controlled with a standard small linear actuator which is available for less than 30 Euro. I use here an actuator with 50 mm length. But 25 mm should work also.
 
-In addition to the 22 KHz logic, only four other items are required:
+In addition to the 22 kHz logic, only four other items are required:
 
 - Step-down-converter 12V to 5V: D24V10F5
 - Compass: GY-271 from AzDelivery (install [QMC5883LCompass](https://github.com/mprograms/QMC5883LCompass) library in Arduino)
