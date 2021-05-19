@@ -16,7 +16,7 @@
 // Controls satellite dish direction with Diseqc rotor (azimut) and linear actuator (elevation)
 // Uses an MPU6050 device for Elevation and a QMC5883L compass for Azimut control.
 
-// Version 1.0, 09.02.2021, AK-Homberger
+// Version 1.1, 19.05.2021, AK-Homberger
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -436,9 +436,9 @@ void EEPROM_Read(float *num, int MemPos)
 void write0() {                      // write a '0' bit toneburst
   for (int i = 1; i <= 22; i++) {    // 1 ms of 22 kHz (22 cycles)
     digitalWrite(datapin, HIGH);
-    delayMicroseconds(16);
+    delayMicroseconds(22);
     digitalWrite(datapin, LOW);
-    delayMicroseconds(17);
+    delayMicroseconds(22);
   }
   delayMicroseconds(500);             // 0.5 ms of silence
 }
@@ -447,9 +447,9 @@ void write0() {                      // write a '0' bit toneburst
 void write1() {                      // write a '1' bit toneburst
   for (int i = 1; i <= 11; i++) {    // 0.5 ms of 22 kHz (11 cycles)
     digitalWrite(datapin, HIGH);
-    delayMicroseconds(16);
+    delayMicroseconds(22);
     digitalWrite(datapin, LOW);
-    delayMicroseconds(17);
+    delayMicroseconds(22);
   }
   delayMicroseconds(1000);            // 1 ms of silence
 }
