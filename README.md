@@ -30,7 +30,7 @@ In addition to the 22 kHz logic, only four other items are required:
 
 The compass and the gyroscope are connected to the I2C bus of the D1 Mini (using D1=SCL and D2=SDA). The compass is inside the box on the pcb. The gyroscope is connected with a short 4-wire cable and placed on the back of the satellite dish.
 
-The motor driver is using ports D0 and D6. The 22 KHz signal is generated on port D5.
+The motor driver is using ports D0 and D6. The 22 kHz signal is generated on port D5.
 
 ![Circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/IMG_1400.jpg)
 
