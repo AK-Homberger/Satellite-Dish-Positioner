@@ -14,7 +14,7 @@ The ESP8266 (in D1 Mini) controls the Diseqc motor with 22 kHz tone signals as d
 
 ![22KhZ-Signal](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/22kHz-Signal.JPG)
 
-The delay values had to be djusted for the faster ESP8266. The delay with 21 microseconds work perfectly.
+The delay values in the code had to be adjusted for the faster ESP8266. The delay with 21 microseconds works perfectly.
 
 The motor gets the 12 Volt power via the coax connection. Be careful with the coax connector when the device is powerd. A shortcut between core and shield would instantly destroy the inductor coil (it can only handle about 300 mA).
 
