@@ -436,9 +436,9 @@ void EEPROM_Read(float *num, int MemPos)
 void write0() {                      // write a '0' bit toneburst
   for (int i = 1; i <= 22; i++) {    // 1 ms of 22 kHz (22 cycles)
     digitalWrite(datapin, HIGH);
-    delayMicroseconds(22);
+    delayMicroseconds(21);
     digitalWrite(datapin, LOW);
-    delayMicroseconds(22);
+    delayMicroseconds(21);
   }
   delayMicroseconds(500);             // 0.5 ms of silence
 }
@@ -447,9 +447,9 @@ void write0() {                      // write a '0' bit toneburst
 void write1() {                      // write a '1' bit toneburst
   for (int i = 1; i <= 11; i++) {    // 0.5 ms of 22 kHz (11 cycles)
     digitalWrite(datapin, HIGH);
-    delayMicroseconds(22);
+    delayMicroseconds(21);
     digitalWrite(datapin, LOW);
-    delayMicroseconds(22);
+    delayMicroseconds(21);
   }
   delayMicroseconds(1000);            // 1 ms of silence
 }
