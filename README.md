@@ -12,6 +12,10 @@ The rotor is a standard Diseqc dish motor for less than 50 Euro. But for this pr
 
 The ESP8266 (in D1 Mini) controls the Diseqc motor with 22 kHz tone signals as defined in the [Diseqc specification](https://www.eutelsat.com/files/PDF/DiSEqC-documentation.zip) (see bus_spec.pdf, section 5 and also positioner_appli_notice.pdf). The ESP8266 generates the signal which has to be modulated on the coax signal line of the motor. I found the necessary circuit on GitHub:(https://github.com/acrerd/Arduino-Diseqc-solar-tracker). Many thanks for the helpful support. That saved me a lot of time. For simplification, I only used the right part of the [circuit](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/diseqc-interface.pdf) starting with the 100 Ohm resistor. The risistor is directly connected to port D5 on the D1 Mini. This is sufficient to generate a signal that the Diseqc moter is recognising.
 
+![22KhZ-Signal](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/22kHz-Signal.JPG)
+
+The delay values had to be djusted for the faster ESP8266. The delay with 21 microseconds work perfectly.
+
 The motor gets the 12 Volt power via the coax connection. Be careful with the coax connector when the device is powerd. A shortcut between core and shield would instantly destroy the inductor coil (it can only handle about 300 mA).
 
 The motor is able to move from -75 to +75 degrees with an accuracy of 1/16 degree. That is more than sufficient for positioning the azimut.
