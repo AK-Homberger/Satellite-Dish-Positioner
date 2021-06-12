@@ -80,7 +80,6 @@ The shown six values have to be set in this line:
 ```
 compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);   // Do a calibration for the compass and put your values here!!!
 ```
-After calibration, comment out the three lines again.
 
 For the MPU there is also an calibration function available. See library for [details](https://github.com/gabriel-milan/TinyMPU6050/blob/master/examples/ArduinoIDE_Angles_Example/ArduinoIDE_Angles_Example.ino). But due to the fact that the elevation offset has to be set anyway, it is not necessary to do the calibration for the device, to get the individual offsets.
 
