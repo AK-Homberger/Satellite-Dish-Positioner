@@ -90,7 +90,7 @@ experimental::ESP8266WiFiGratuitous::stationKeepAliveSetIntervalMs(5000);
 ```
 is part of the internal [ESP8266WiFi](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFiGratuitous.h) library. It solves a WLAN connection problem for my router by sending ARP packets every 5 seconds to keep the connection.
 
-If you don't need this, simply uncomment the line.
+If you don't need this, simply comment out the line.
 
 
 ## 3D Prints
