@@ -84,6 +84,15 @@ After calibration, comment out the three lines again.
 
 For the MPU there is also an calibration function available. See library for [details](https://github.com/gabriel-milan/TinyMPU6050/blob/master/examples/ArduinoIDE_Angles_Example/ArduinoIDE_Angles_Example.ino). But due to the fact that the elevation offset has to be set anyway, it is not necessary to do the calibration for the device, to get the individual offsets.
 
+The following line in the code:
+```
+experimental::ESP8266WiFiGratuitous::stationKeepAliveSetIntervalMs(5000);
+```
+is part of the internal [ESP8266WiFi](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFiGratuitous.h) library. It solves a WLAN connection problem for my router by sending ARP packets to keep the connection.
+
+If you don't need this, simply uncomment the line.
+
+
 ## 3D Prints
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
