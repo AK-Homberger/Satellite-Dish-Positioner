@@ -72,13 +72,15 @@ Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Set
 
 ![Settings](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWebSettings.png).
 
-To improve the precision of the comopass it is necessray to calibrate the device once. To do the calibration uncomment the three lines and start the sketch and look to output of the IDE Serial Monitor: 
+To improve the precision of the compass, it is necessray to calibrate the device on time. To do the calibration uncomment the three lines and start the sketch and look to output of the IDE Serial Monitor: 
 
 ```
  //Serial.println("Starting calibration...");
  //mpu.Calibrate();
  //Serial.println("Calibration complete!");
 ```
+
+During the calibration process the device have to be moved in all possible directions (see library examples). It is probably a good idea to to the calibration before placing the pcb on the dish.
 
 The shown six values have to be set in this line:
 ```
