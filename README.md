@@ -72,7 +72,7 @@ Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Set
 
 ![Settings](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWebSettings.png).
 
-To improve the precision of the compass, it is necessary to calibrate the device befor using it. To do the calibration load and run the [calibration sketch](QMC5883LCompass) from the QMC5883LCompass library.
+To improve the precision of the compass, it is necessary to calibrate the device befor using it. To do the calibration load and run the [calibration sketch](https://github.com/mprograms/QMC5883LCompass/tree/master/examples/calibration) from the QMC5883LCompass library.
 
 During the calibration process the device have to be moved in all possible directions (see library examples). It is probably a good idea to do the calibration before placing the pcb on the dish.
 
