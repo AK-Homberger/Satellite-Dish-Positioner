@@ -72,6 +72,19 @@ Values for Azimut, Elevation, Offsets and Motor Speed can be changed with a "Set
 
 ![Settings](https://github.com/AK-Homberger/Satellite-Dish-Positioner/blob/main/SatfinderWebSettings.png).
 
+To improve the precision of the comopass it is necessray to calibrate the device once. To do the calibration uncomment the three lines and start the sketch and look to output of the IDE Serial Monitor: 
+
+```
+ //Serial.println("Starting calibration...");
+ //mpu.Calibrate();
+ //Serial.println("Calibration complete!");
+```
+
+The shown six values have to be set in this line:
+```
+compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);   // Do a calibration for the compass and put your values here!!!
+```
+
 ## 3D Prints
 The connection between the sat dish and the rotor as well as the other parts are designed with OpenSCAD. The files are stored in the SCAD folder.
 
