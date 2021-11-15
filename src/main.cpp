@@ -68,113 +68,6 @@ MPU6050 mpu (Wire);
 
 ESP8266WebServer server(80);
 
-void setup(void) {
-  bool LED = false;
-
-  Serial.begin(115200);
-  delay(1000);
-  Serial.println();
-  Serial.println("Initialise Compass and MPU...");
-
-  compass.init();
-  compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);   // Do a calibration for the compass and put your values here!!!
-  compass.setSmoothing(10, true);
-
-  // MPU Initialization
-  mpu.Initialize();
-  //Serial.println("Starting calibration...");
-  //mpu.Calibrate();
-  //Serial.println("Calibration complete!");
-
-  pinMode(datapin, OUTPUT);
-  pinMode(motor1, OUTPUT);
-  pinMode(motor2, OUTPUT);
-  digitalWrite(motor1, HIGH);
-  digitalWrite(motor2, HIGH);
-  pinMode(D4, OUTPUT);
-  digitalWrite(D4, HIGH);
-
-  // ESP connects to your wifi
-  WiFi.mode(WIFI_STA);
-  WiFi.hostname("SatFinder");
-  WiFi.begin(ssid, password);
-
-  Serial.print("Connecting to ");
-  Serial.print(ssid);
-
-  // Wait for WiFi to connect
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(500);
-    digitalWrite(D4, LED);
-    LED = ! LED;
-  }
-  digitalWrite(D4, HIGH);
-
-  // If connection successful show IP address in serial monitor
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());  //IP address assigned to your ESP
-
-  experimental::ESP8266WiFiGratuitous::stationKeepAliveSetIntervalMs(5000);
-
-  // Arduino OTA config and start
-  ArduinoOTA.setHostname("Satfinder");
-  ArduinoOTA.begin();
-
-  server.on("/", handleRoot);      //This is display page
-  server.on("/get_data", handleGetData);//To get update of values
-  server.on("/on", handleOn);
-  server.on("/off", handleOff);
-  server.on("/r_off", handleRotorOff);
-  server.on("/az_up", handleAzUp);
-  server.on("/az_down", handleAzDown);
-  server.on("/el_up", handleElUp);
-  server.on("/el_down", handleElDown);
-  server.on("/rotor_up", handleRotorUp);
-  server.on("/rotor_down", handleRotorDown);
-  server.on("/rotor_up_step", handleRotorUpStep);
-  server.on("/rotor_down_step", handleRotorDownStep);
-  server.on("/cal", handleCal);
-
-  server.on("/slider1", handleSlider1);
-  server.on("/slider2", handleSlider2);
-  server.on("/slider3", handleSlider3);
-
-  server.on("/settings", handleSettings);
-  server.on("/get_settings", handleGetSettings);
-  server.on("/set_settings", handleSetSettings);
-
-  server.onNotFound(handleNotFound);
-
-  server.begin();                  //Start server
-  Serial.println("HTTP server started");
-
-  EEPROM.begin(128);
-  float tmp = 0;
-
-  EEPROM_Read(&tmp, 0);
-  if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
-
-  EEPROM_Read(&tmp, sizeof(float));
-  if ( (tmp >= 10) && (tmp < 50) ) Astra_El = tmp;
-
-  EEPROM_Read(&tmp, sizeof(float) * 2);
-  if (abs(tmp) < 90) El_Offset = tmp;
-
-  EEPROM_Read(&tmp, sizeof(float) * 3);
-  if (abs(tmp) < 90) Az_Offset = tmp;
-
-  EEPROM_Read(&tmp, sizeof(float) * 4);
-  if ((tmp >= 500) && (tmp < 1024)) motorSpeed = trunc(tmp);
-
-  sAzimut = Astra_Az;
-  sElevation = Astra_El;
-}
-
-
 void handleRoot() {
   server.send(200, "text/html", MAIN_page); //Send web page
 }
@@ -182,7 +75,6 @@ void handleRoot() {
 void handleSettings() {
   server.send(200, "text/html", Settings_page); //Send settings web page
 }
-
 
 void handleGetSettings() {
   String Text;
@@ -199,6 +91,25 @@ void handleGetSettings() {
   server.send(200, "text/plain", Text); //Send values to client ajax request
 }
 
+void EEPROM_Write(float *num, int MemPos)
+{
+  byte ByteArray[4];
+  memcpy(ByteArray, num, 4);
+  for (int x = 0; x < 4; x++)
+  {
+    EEPROM.write((MemPos * 4) + x, ByteArray[x]);
+  }
+}
+
+void EEPROM_Read(float *num, int MemPos)
+{
+  byte ByteArray[4];
+  for (int x = 0; x < 4; x++)
+  {
+    ByteArray[x] = EEPROM.read((MemPos * 4) + x);
+  }
+  memcpy(num, ByteArray, 4);
+}
 
 void handleSetSettings() {
   float tmp;
@@ -230,7 +141,6 @@ void handleSetSettings() {
   EEPROM.commit();
   server.send(200, "text/html");
 }
-
 
 void handleGetData() {
   String Text;
@@ -302,6 +212,66 @@ void handleRotorUp() {
   if (RotorPos < 70) RotorPos += 1;
   update_rotor = true;
   server.send(200, "text/html");
+}
+
+
+void write0() {                      // write a '0' bit toneburst
+  for (int i = 1; i <= 22; i++) {    // 1 ms of 22 kHz (22 cycles)
+    digitalWrite(datapin, HIGH);
+    delayMicroseconds(21);
+    digitalWrite(datapin, LOW);
+    delayMicroseconds(21);
+  }
+  delayMicroseconds(500);             // 0.5 ms of silence
+}
+
+
+void write1() {                      // write a '1' bit toneburst
+  for (int i = 1; i <= 11; i++) {    // 0.5 ms of 22 kHz (11 cycles)
+    digitalWrite(datapin, HIGH);
+    delayMicroseconds(21);
+    digitalWrite(datapin, LOW);
+    delayMicroseconds(21);
+  }
+  delayMicroseconds(1000);            // 1 ms of silence
+}
+
+
+// Calculate parity of a byte
+bool parity_even_bit(byte x) {
+  unsigned int count = 0, i, b = 1;
+
+  for (i = 0; i < 8; i++) {
+    if ( x & (b << i) ) {
+      count++;
+    }
+  }
+  if ( (count % 2) ) {
+    return 0;
+  }
+  return 1;
+}
+
+
+// write the parity of a byte (as a toneburst)
+void write_parity(byte x) {
+  if (parity_even_bit(x)) write0(); else write1();
+}
+
+
+// write out a byte (as a toneburst)
+// high bit first (ie as if reading from the left)
+void write_byte(byte x) {
+  for (int j = 7; j >= 0; j--) {
+    if (x & (1 << j)) write1(); else write0();
+  }
+}
+
+
+// write out a byte with parity attached (as a toneburst)
+void write_byte_with_parity(byte x) {
+  write_byte(x);
+  write_parity(x);
 }
 
 
@@ -412,85 +382,112 @@ void handleNotFound() {                                           // Unknown req
   server.send(404, "text/plain", "File Not Found\n\n");
 }
 
-void EEPROM_Write(float *num, int MemPos)
-{
-  byte ByteArray[4];
-  memcpy(ByteArray, num, 4);
-  for (int x = 0; x < 4; x++)
-  {
-    EEPROM.write((MemPos * 4) + x, ByteArray[x]);
+void setup(void) {
+  bool LED = false;
+
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println();
+  Serial.println("Initialise Compass and MPU...");
+
+  compass.init();
+  compass.setCalibration(-1598, 1511, -2365, 872, -1417, 1440);   // Do a calibration for the compass and put your values here!!!
+  compass.setSmoothing(10, true);
+
+  // MPU Initialization
+  mpu.Initialize();
+  //Serial.println("Starting calibration...");
+  //mpu.Calibrate();
+  //Serial.println("Calibration complete!");
+
+  pinMode(datapin, OUTPUT);
+  pinMode(motor1, OUTPUT);
+  pinMode(motor2, OUTPUT);
+  digitalWrite(motor1, HIGH);
+  digitalWrite(motor2, HIGH);
+  pinMode(D4, OUTPUT);
+  digitalWrite(D4, HIGH);
+
+  // ESP connects to your wifi
+  WiFi.mode(WIFI_STA);
+  WiFi.hostname("SatFinder");
+  WiFi.begin(ssid, password);
+
+  Serial.print("Connecting to ");
+  Serial.print(ssid);
+
+  // Wait for WiFi to connect
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+    digitalWrite(D4, LED);
+    LED = ! LED;
   }
+  digitalWrite(D4, HIGH);
+
+  // If connection successful show IP address in serial monitor
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());  //IP address assigned to your ESP
+
+  experimental::ESP8266WiFiGratuitous::stationKeepAliveSetIntervalMs(5000);
+
+  // Arduino OTA config and start
+  ArduinoOTA.setHostname("Satfinder");
+  ArduinoOTA.begin();
+
+  server.on("/", handleRoot);      //This is display page
+  server.on("/get_data", handleGetData);//To get update of values
+  server.on("/on", handleOn);
+  server.on("/off", handleOff);
+  server.on("/r_off", handleRotorOff);
+  server.on("/az_up", handleAzUp);
+  server.on("/az_down", handleAzDown);
+  server.on("/el_up", handleElUp);
+  server.on("/el_down", handleElDown);
+  server.on("/rotor_up", handleRotorUp);
+  server.on("/rotor_down", handleRotorDown);
+  server.on("/rotor_up_step", handleRotorUpStep);
+  server.on("/rotor_down_step", handleRotorDownStep);
+  server.on("/cal", handleCal);
+
+  server.on("/slider1", handleSlider1);
+  server.on("/slider2", handleSlider2);
+  server.on("/slider3", handleSlider3);
+
+  server.on("/settings", handleSettings);
+  server.on("/get_settings", handleGetSettings);
+  server.on("/set_settings", handleSetSettings);
+
+  server.onNotFound(handleNotFound);
+
+  server.begin();                  //Start server
+  Serial.println("HTTP server started");
+
+  EEPROM.begin(128);
+  float tmp = 0;
+
+  EEPROM_Read(&tmp, 0);
+  if ((tmp >= 90) && (tmp <= 270)) Astra_Az = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float));
+  if ( (tmp >= 10) && (tmp < 50) ) Astra_El = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 2);
+  if (abs(tmp) < 90) El_Offset = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 3);
+  if (abs(tmp) < 90) Az_Offset = tmp;
+
+  EEPROM_Read(&tmp, sizeof(float) * 4);
+  if ((tmp >= 500) && (tmp < 1024)) motorSpeed = trunc(tmp);
+
+  sAzimut = Astra_Az;
+  sElevation = Astra_El;
 }
 
-void EEPROM_Read(float *num, int MemPos)
-{
-  byte ByteArray[4];
-  for (int x = 0; x < 4; x++)
-  {
-    ByteArray[x] = EEPROM.read((MemPos * 4) + x);
-  }
-  memcpy(num, ByteArray, 4);
-}
-
-
-void write0() {                      // write a '0' bit toneburst
-  for (int i = 1; i <= 22; i++) {    // 1 ms of 22 kHz (22 cycles)
-    digitalWrite(datapin, HIGH);
-    delayMicroseconds(21);
-    digitalWrite(datapin, LOW);
-    delayMicroseconds(21);
-  }
-  delayMicroseconds(500);             // 0.5 ms of silence
-}
-
-
-void write1() {                      // write a '1' bit toneburst
-  for (int i = 1; i <= 11; i++) {    // 0.5 ms of 22 kHz (11 cycles)
-    digitalWrite(datapin, HIGH);
-    delayMicroseconds(21);
-    digitalWrite(datapin, LOW);
-    delayMicroseconds(21);
-  }
-  delayMicroseconds(1000);            // 1 ms of silence
-}
-
-
-// Calculate parity of a byte
-bool parity_even_bit(byte x) {
-  unsigned int count = 0, i, b = 1;
-
-  for (i = 0; i < 8; i++) {
-    if ( x & (b << i) ) {
-      count++;
-    }
-  }
-  if ( (count % 2) ) {
-    return 0;
-  }
-  return 1;
-}
-
-
-// write the parity of a byte (as a toneburst)
-void write_parity(byte x) {
-  if (parity_even_bit(x)) write0(); else write1();
-}
-
-
-// write out a byte (as a toneburst)
-// high bit first (ie as if reading from the left)
-void write_byte(byte x) {
-  for (int j = 7; j >= 0; j--) {
-    if (x & (1 << j)) write1(); else write0();
-  }
-}
-
-
-// write out a byte with parity attached (as a toneburst)
-void write_byte_with_parity(byte x) {
-  write_byte(x);
-  write_parity(x);
-}
 
 
 // goto position angle a in degrees, south = 0.
